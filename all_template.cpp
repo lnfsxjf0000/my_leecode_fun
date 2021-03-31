@@ -1,4 +1,7 @@
-ï»¿// all_template.cpp : æ­¤æ–‡ä»¶åŒ…å« "main" å‡½æ•°ã€‚ç¨‹åºæ‰§è¡Œå°†åœ¨æ­¤å¤„å¼€å§‹å¹¶ç»“æŸã€‚
+
+·ÖÖ§1
+°æ±¾1
+// all_template.cpp : ´ËÎÄ¼ş°üº¬ "main" º¯Êı¡£³ÌĞòÖ´ĞĞ½«ÔÚ´Ë´¦¿ªÊ¼²¢½áÊø¡£
 //
 
 #include <iostream>
@@ -17,7 +20,7 @@
 using namespace std;
 
 
-//èƒŒåŒ…é—®é¢˜
+//±³°üÎÊÌâ
 struct Bag
 {
 	int v;
@@ -26,19 +29,19 @@ struct Bag
 void bag_problem()
 {
 	int F[1024] = { 0 };
-	int n, m;//å•†å“æ•°é‡ï¼ŒèƒŒåŒ…å¤§å°
+	int n, m;//ÉÌÆ·ÊıÁ¿£¬±³°ü´óĞ¡
 	cin >> n >> m;
-	//01èƒŒåŒ…
+	//01±³°ü
 	for (int i = 0; i < n; i++)
 	{
-		int v, w;//ä»·å€¼  ä½“ç§¯
+		int v, w;//¼ÛÖµ  Ìå»ı
 		cin >> v >> w;
 		for (int j = m; j >= w; j--)
 			F[j] = max(F[j], F[j - w] + v);
 	}
 	cout << F[m] << endl;
 
-	//å®Œå…¨èƒŒåŒ…
+	//ÍêÈ«±³°ü
 	for (int i = 0; i < n; i++)
 	{
 		int v, w;
@@ -48,12 +51,12 @@ void bag_problem()
 	}
 	cout << F[m] << endl;
 
-	//å¤šé‡èƒŒåŒ…   æ¯ä¸ªæ•°é‡100ä»¥å†…
+	//¶àÖØ±³°ü   Ã¿¸öÊıÁ¿100ÒÔÄÚ
 	for (int i = 0; i < n; i++)
 	{
-		int v, w, s;//æ¯ä¸ªå•†å“çš„ä¸ªæ•°
-		cin >> v >> w >> s;//ä»·å€¼ é‡é‡  ä¸ªæ•°
-		for (int j = m; j >= 0; j--)//j 0 è¿˜æ˜¯ w 
+		int v, w, s;//Ã¿¸öÉÌÆ·µÄ¸öÊı
+		cin >> v >> w >> s;//¼ÛÖµ ÖØÁ¿  ¸öÊı
+		for (int j = m; j >= 0; j--)//j 0 »¹ÊÇ w 
 		{
 			for (int k = 0; k < s && k*w < j; k++)
 				F[j] = max(F[j], F[j - k * w] + k * v);
@@ -62,12 +65,12 @@ void bag_problem()
 
 	}
 
-	//å¤šé‡èƒŒåŒ…ä¼˜åŒ–
+	//¶àÖØ±³°üÓÅ»¯
 	vector<Bag> bag_partion;
 
 	for (int i = 0; i < n; i++)
 	{
-		int v, w, s;//æ¯ä¸ªæ•°é‡ä¸ä¸€æ ·
+		int v, w, s;//Ã¿¸öÊıÁ¿²»Ò»Ñù
 		cin >> v >> w >> s;
 		for (int k = 1; k <= s; k = k * 2)
 		{
@@ -88,7 +91,7 @@ void bag_problem()
 	cout << F[m] << endl;
 }
 
-//æ–æ³¢é‚£å¥‘
+//ì³²¨ÄÇÆõ
 void fbnq(int n) {
 	int now = 0, last = 1, before_last = 0;
 	for (int i = 1; i <= n; i++) {
@@ -103,7 +106,7 @@ void fbnq(int n) {
 
 
 
-//äºŒåˆ†ï¼š
+//¶ş·Ö£º
 #define check(n)   true
 int bsearch_2(int l, int r)
 {
@@ -160,14 +163,14 @@ int right_bound(vector<int>&nums, int target) {
 	return right;
 }
 
-//æ’åºï¼š
-//å¿«æ’ï¼š
+//ÅÅĞò£º
+//¿ìÅÅ£º
 void quick_sort_2(vector<int> &q, int left, int right) {
 	if (left >= right) return;
 	int i = left - 1, j = right + 1;
 	int target = q[left + right >> 1];
 	//int target = q[right-1];//left
-	//int target = q[left + 1+(right-left)>> 1];//ä¸è¡Œ
+	//int target = q[left + 1+(right-left)>> 1];//²»ĞĞ
 	while (i < j) {
 		do i++; while (q[i] < target);
 		do j--; while (q[j] > target);
@@ -176,8 +179,8 @@ void quick_sort_2(vector<int> &q, int left, int right) {
 	quick_sort_2(q, left, j);
 	quick_sort_2(q, j + 1, right);
 }
-//å½’å¹¶æ’åºï¼š
-//å®¹å™¨æ–¹æ³•
+//¹é²¢ÅÅĞò£º
+//ÈİÆ÷·½·¨
 void merge_sort(vector<int> &q, int left, int right) {
 	if (left >= right) return;
 	int mid = left + right >> 1;
@@ -186,9 +189,9 @@ void merge_sort(vector<int> &q, int left, int right) {
 	merge_sort(q, mid + 1, right);
 
 	static vector<int> temp;
-	temp.clear();//æ³¨æ„æ¸…é™¤
+	temp.clear();//×¢ÒâÇå³ı
 
-	int i = left, j = mid + 1;//ç­‰äºleft
+	int i = left, j = mid + 1;//µÈÓÚleft
 	while (i <= mid && j <= right) {
 		if (q[i] > q[j])
 			temp.push_back(q[j++]);
@@ -200,7 +203,7 @@ void merge_sort(vector<int> &q, int left, int right) {
 	for (int m = left, t = 0; t < temp.size(); m++, t++)q[m] = temp[t];
 }
 
-//é€†åºå¯¹ï¼š
+//ÄæĞò¶Ô£º
 //res += merge_sort2(q, l, mid);
 //res += mid - i + 1;
 //return res;
@@ -208,14 +211,14 @@ void merge_sort(vector<int> &q, int left, int right) {
 
 
 
-//å †æ’åºï¼š
-//CSDNç‰ˆæœ¬
+//¶ÑÅÅĞò£º
+//CSDN°æ±¾
 void push_down(vector<int>&q, int root, int size) {
 	int max = root;
 	int left = 2 * root + 1;
 	int right = 2 * root + 2;
 
-	if (left < size && q[max] < q[left])	max = left; //æ³¨æ„å…ˆåˆ¤æ–­æ˜¯å¦æº¢å‡º
+	if (left < size && q[max] < q[left])	max = left; //×¢ÒâÏÈÅĞ¶ÏÊÇ·ñÒç³ö
 	if (right < size && q[max] < q[right])	max = right;
 
 	if (max != root) {
@@ -228,12 +231,12 @@ void heap_sort(vector<int> &q, int size) {
 		push_down(q, i, size);
 	}
 	while (size > 1) {
-		swap(q[0], q[--size]);//å…ˆ-- swap
+		swap(q[0], q[--size]);//ÏÈ-- swap
 		push_down(q, 0, size);
 	}
 }
 
-//åˆ¤æ–­è´¨æ•°
+//ÅĞ¶ÏÖÊÊı
 bool is_prime(int x)
 {
 	if (x < 2) return false;
@@ -242,7 +245,7 @@ bool is_prime(int x)
 			return false;
 	return true;
 }
-//è¾“å‡ºæ‰€æœ‰è´¨æ•°å’Œä¸ªæ•°
+//Êä³öËùÓĞÖÊÊıºÍ¸öÊı
 bool all_prime(int x) {
 
 
@@ -259,11 +262,11 @@ bool all_prime(int x) {
 
 
 
-//æœ€é•¿å›æ–‡å­—ç¬¦ä¸²
+//×î³¤»ØÎÄ×Ö·û´®
 string longestPalindrome(string s) {
 	string res;
 	int len = 0;
-	//OK ç®€å•
+	//OK ¼òµ¥
 	for (int k = 0; k < s.size(); k++) {
 
 		int i = k, j = k + 1;
@@ -283,11 +286,11 @@ string longestPalindrome(string s) {
 	return res;
 }
 
-//åè½¬å­—ç¬¦ä¸²é‡Œçš„å•è¯
+//·´×ª×Ö·û´®ÀïµÄµ¥´Ê
 string reverseWords(string &s) {
 	int i = 0, j = 0;
 	s += ' ';
-	//å…ˆå–å‡ºå¤šä½™çš„ç©ºæ ¼
+	//ÏÈÈ¡³ö¶àÓàµÄ¿Õ¸ñ
 	while (j < s.size() && s[j] == ' ') j++;
 	while (j < s.size()) {
 		if (s[j] != ' ')
@@ -302,39 +305,39 @@ string reverseWords(string &s) {
 		return m;
 	}
 
-	//æ“¦é™¤å¤šä½™éƒ¨åˆ†
+	//²Á³ı¶àÓà²¿·Ö
 	s.erase(s.begin() + i - 1, s.end());
-	//ä¸€æ¬¡åè½¬
+	//Ò»´Î·´×ª
 	i = 0; j = 0;
 	while (i < s.size())
 	{
 		while (j < s.size() && s[j] != ' ') j++;
 		reverse(s.begin() + i, s.begin() + j);
 
-		j++;//è®°å¾—++å’Œé¡ºåº
+		j++;//¼ÇµÃ++ºÍË³Ğò
 		i = j;
 	}
-	//ä¸¤æ¬¡åè½¬
+	//Á½´Î·´×ª
 	i = 0, j = s.size();
 	reverse(s.begin() + i, s.begin() + j);
 	return s;
 }
-//æœ‰nä¸ªæ•°ï¼Œä¸¤ä¸¤ç»„æˆäºŒå…ƒç»„ï¼Œç›¸å·®æœ€å°çš„æœ‰å¤šå°‘å¯¹å‘¢ï¼Ÿç›¸å·®æœ€å¤§å‘¢ï¼Ÿ
-//1.å…ˆæ’åº
-//ç‰¹æ®Šæƒ…å†µï¼šå¦‚æœæ’å®Œåºä¹‹åå‘ç°æ•°ç»„ä¸­æ‰€æœ‰æ•°éƒ½ç›¸åŒï¼Œç›´æ¥è¾“å‡ºç»“æœ
-//ç»“æœä¸ºï¼šå·®æœ€å¤§ä¸ªæ•° = å·®æœ€å°ä¸ªæ•° = ï¼ˆn * (n - 1)) / 2; (ä¸¤ä¸¤ç»„åˆ)
-//2.ç»Ÿè®¡æ•°ç»„ä¸­æ¯ç§æ•°å­—çš„ä¸ªæ•°ï¼ˆè¿™é‡Œç”¨çš„mapï¼‰
-//3.è®¡ç®—å·®æœ€å°ä¸ªæ•°
-//3.1.å¦‚æœæ•°ç»„ä¸­æ²¡æœ‰é‡å¤æ•°å­—ï¼Œè¯´æ˜æœ€å°å·®ä¸ä¸º0ï¼Œæœ€å°å·®è‚¯å®šæ˜¯æ•°ç»„ä¸­ç›¸é‚»ä¸¤ä¸ªæ•°çš„å·®
-//å› æ­¤ï¼Œéå†ä¸€è¾¹æ•°ç»„ï¼Œè®¡ç®—å¹¶ç»Ÿè®¡æœ€å°å·®ã€‚
-//3.2.å¦‚æœæ•°ç»„ä¸­æœ‰é‡å¤æ•°å­—ï¼Œè¯´æ˜æœ€å°å·®æ˜¯0ï¼Œæ­¤æ—¶ï¼Œéå†ä¸€è¾¹mapï¼Œæ•°å­—ä¸ªæ•°ä¸ä¸º0çš„
-//æ•°å­—ä¼šäº§ç”Ÿæœ€å°å·®0ï¼Œåˆ©ç”¨å…¬å¼è®¡ç®—å³å¯
-//4.è®¡ç®—å·®æœ€å¤§ä¸ªæ•°
-//åªæœ‰ä¸€ç§æƒ…å†µï¼Œæœ€å¤§å€¼ä¸æœ€å°å€¼çš„ä¸¤ä¸¤ç»„åˆï¼Œå³æœ€å¤§å€¼ä¸ªæ•° * æœ€å°å€¼ä¸ªæ•°                                                                                                                     
+//ÓĞn¸öÊı£¬Á½Á½×é³É¶şÔª×é£¬Ïà²î×îĞ¡µÄÓĞ¶àÉÙ¶ÔÄØ£¿Ïà²î×î´óÄØ£¿
+//1.ÏÈÅÅĞò
+//ÌØÊâÇé¿ö£ºÈç¹ûÅÅÍêĞòÖ®ºó·¢ÏÖÊı×éÖĞËùÓĞÊı¶¼ÏàÍ¬£¬Ö±½ÓÊä³ö½á¹û
+//½á¹ûÎª£º²î×î´ó¸öÊı = ²î×îĞ¡¸öÊı = £¨n * (n - 1)) / 2; (Á½Á½×éºÏ)
+//2.Í³¼ÆÊı×éÖĞÃ¿ÖÖÊı×ÖµÄ¸öÊı£¨ÕâÀïÓÃµÄmap£©
+//3.¼ÆËã²î×îĞ¡¸öÊı
+//3.1.Èç¹ûÊı×éÖĞÃ»ÓĞÖØ¸´Êı×Ö£¬ËµÃ÷×îĞ¡²î²»Îª0£¬×îĞ¡²î¿Ï¶¨ÊÇÊı×éÖĞÏàÁÚÁ½¸öÊıµÄ²î
+//Òò´Ë£¬±éÀúÒ»±ßÊı×é£¬¼ÆËã²¢Í³¼Æ×îĞ¡²î¡£
+//3.2.Èç¹ûÊı×éÖĞÓĞÖØ¸´Êı×Ö£¬ËµÃ÷×îĞ¡²îÊÇ0£¬´ËÊ±£¬±éÀúÒ»±ßmap£¬Êı×Ö¸öÊı²»Îª0µÄ
+//Êı×Ö»á²úÉú×îĞ¡²î0£¬ÀûÓÃ¹«Ê½¼ÆËã¼´¿É
+//4.¼ÆËã²î×î´ó¸öÊı
+//Ö»ÓĞÒ»ÖÖÇé¿ö£¬×î´óÖµÓë×îĞ¡ÖµµÄÁ½Á½×éºÏ£¬¼´×î´óÖµ¸öÊı * ×îĞ¡Öµ¸öÊı                                                                                                                     
 
-//49. å­—æ¯å¼‚ä½è¯åˆ†ç»„
+//49. ×ÖÄ¸ÒìÎ»´Ê·Ö×é
 vector<vector<string>> groupAnagrams(vector<string>& strs) {
-	//é€šè¿‡äº† ä¸éš¾  çœ‹ä¸€ä¸‹å“ˆå¸Œè¡¨
+	//Í¨¹ıÁË ²»ÄÑ  ¿´Ò»ÏÂ¹şÏ£±í
 	unordered_map<string, vector<string>> hash;
 	for (auto str : strs)
 	{
@@ -350,8 +353,8 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
 	return res;
 
 }
-//å¤–è§‚æ•°åˆ—
-//ä¸éš¾ æ€è·¯è¦å¯¹
+//Íâ¹ÛÊıÁĞ
+//²»ÄÑ Ë¼Â·Òª¶Ô
 string countAndSay(int n) {
 	string s = "1";
 	for (int i = 1; i < n; i++) {
@@ -368,7 +371,7 @@ string countAndSay(int n) {
 	}
 	return s;
 }
-//3æ— é‡å¤å­—ç¬¦çš„æœ€é•¿å­—ç¬¦ä¸² é•¿åº¦
+//3ÎŞÖØ¸´×Ö·ûµÄ×î³¤×Ö·û´® ³¤¶È
 int lengthOfLongestSubstring(string s) {
 	unordered_map<char, int> hash;
 	
@@ -382,16 +385,16 @@ int lengthOfLongestSubstring(string s) {
 	}
 	return res;
 }
-//å¯»æ‰¾è¿ä¸ªæœ‰åºæ•°ç»„çš„ä¸­ä½æ•°
+//Ñ°ÕÒÁ¬¸öÓĞĞòÊı×éµÄÖĞÎ»Êı
 double findMedianSortedArrays(vector<int>& A, vector<int>& B) {
-	//è‡ªå·±å†™ è¡Œäº†
+	//×Ô¼ºĞ´ ĞĞÁË
 	int n = A.size();
 	int m = B.size();
 	int len = m + n;
 	int left = 0, right = 0;
 	int aStart = 0, bStart = 0;
 	
-	for (int i = 0; i <= len / 2; i++) {//æ³¨æ„æ¡ä»¶å°äºç­‰äº
+	for (int i = 0; i <= len / 2; i++) {//×¢ÒâÌõ¼şĞ¡ÓÚµÈÓÚ
 
 		left = right;
 		if (aStart < n && (bStart >= m || A[aStart] < B[bStart])) {
@@ -412,7 +415,7 @@ double findMedianSortedArrays(vector<int>& A, vector<int>& B) {
 #define shi ge*25
 #define bai shi*25
 #define qian bai*25
-//20åˆ†é’Ÿ
+//20·ÖÖÓ
 long int ecode(string s) {
 	vector<int> dig;
 	int t = 0;
@@ -440,8 +443,8 @@ long int ecode_all(string s) {
 	return res;
 }
 
-//è‚¯å®šæœ‰å…¶ä»–å‘  20åˆ†ä¸­
-std::unordered_map<int, int> hash_1;//ä¸èƒ½æ”¾å¤–è¾¹ï¼Ÿ  hash å®¹æ˜“é‡å¤  
+//¿Ï¶¨ÓĞÆäËû¿Ó  20·ÖÖĞ
+std::unordered_map<int, int> hash_1;//²»ÄÜ·ÅÍâ±ß£¿  hash ÈİÒ×ÖØ¸´  
 int finish_task(int x, int y) {
 	
 	
@@ -480,7 +483,7 @@ int isPrimeSum(int x, vector<int> num) {
 	return count;
 }
 
-//ç‰¹ä¾‹ ç»çº¬åº¦äºŒåˆ†
+//ÌØÀı ¾­Î³¶È¶ş·Ö
 int bsearch_3(int x, int l, int r, int n) {
 	int res = 0;
 	int count =1;
@@ -543,7 +546,7 @@ int dp2(int i, int j, string &s1, string &s2) {
 		result[i][j] = min(min(dp2(i - 1, j - 1, s1, s2), dp2(i, j - 1, s1, s2)), dp2(i - 1, j, s1, s2)) + 1;
 	return result[i][j];
 }
-//ç¬¬ä¸€ä¸ªè½¬æ¢ä¸ºç¬¬äºŒä¸ªå­—ç¬¦ä¸²çš„æœ€å°‘æ“ä½œ s12s2 ç”¨æ›¿æ¢åˆ é™¤æ’å…¥
+//µÚÒ»¸ö×ª»»ÎªµÚ¶ş¸ö×Ö·û´®µÄ×îÉÙ²Ù×÷ s12s2 ÓÃÌæ»»É¾³ı²åÈë
 int min_distance(string &s1, string &s2) {
 	int i = s1.length() - 1;
 	int j = s2.length() - 1;
@@ -553,9 +556,9 @@ int min_distance(string &s1, string &s2) {
 int dp3(int i, int j, string &s1, string &s2) {
 	int len1 = s1.length(), len2 = s2.length();
 	//static int result[len1][len2] = { 0 };
-	static vector<vector<int>> result(s1.length()+1, vector<int>(s2.length()+1, (0)));//è¦+1
-	//int [][]result  = new int[len1 + 1][len2 + 1]; //é”™è¯¯
-	//åˆå§‹åŒ–é—®é¢˜
+	static vector<vector<int>> result(s1.length()+1, vector<int>(s2.length()+1, (0)));//Òª+1
+	//int [][]result  = new int[len1 + 1][len2 + 1]; //´íÎó
+	//³õÊ¼»¯ÎÊÌâ
 	for (int i = 1; i <= len1; i++)
 		result[i][0] = i;
 	for (int j = 1; j <= len2; j++)
@@ -563,7 +566,7 @@ int dp3(int i, int j, string &s1, string &s2) {
 
 	for (int i = 1; i <= len1; i++) {
 		for (int j = 1; j <= len2; j++) {
-			if (s1[i] == s2[j])//éœ€è¦-1ï¼Ÿ
+			if (s1[i] == s2[j])//ĞèÒª-1£¿
 				result[i][j] = result[i - 1][j - 1];
 			else {
 				result[i][j] = min(min(result[i - 1][j - 1], result[i - 1][j]), result[i][j - 1]) + 1;
@@ -576,7 +579,7 @@ int dp3(int i, int j, string &s1, string &s2) {
 int dp4(int k, int n) {
 	if (k == 1) return n;
 	if (n == 0) return 0;
-	static vector<vector<int>> result(k+1, vector<int>(n+1, (0)));//è¦
+	static vector<vector<int>> result(k+1, vector<int>(n+1, (0)));//Òª
 	static int res = 0;
 
 	if (result[k][n] != 0)
@@ -602,7 +605,7 @@ int dp4(int k, int n) {
 		res = min(res, max(dp4(k, n - i), dp4(k - 1, i-1))+1);//ok
 	return res;
 }
-//ctrl-cé—®é¢˜
+//ctrl-cÎÊÌâ
 int dp6(int n) {
 	static vector<int> result(n+1, 0);
 	result[0] = 0;
@@ -613,14 +616,14 @@ int dp6(int n) {
 	for (int i = 1; i <=n; i++) {
 		int res = dp6(n - i) + 1;
 
-		for (int j = 2; j <i; j++) {//æ³¨æ„jèµ·å§‹ä½ç½®
+		for (int j = 2; j <i; j++) {//×¢ÒâjÆğÊ¼Î»ÖÃ
 			res = max(res, dp6(j - 2)*(i - j+1));
 		}
 		result[i] = res;
 	}
 	return result[n];
 }
-//æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…  æš‚æ—¶å¯ä»¥ åŠ äº†å¥½å¤šæ¡ä»¶
+//ÕıÔò±í´ïÊ½Æ¥Åä  ÔİÊ±¿ÉÒÔ ¼ÓÁËºÃ¶àÌõ¼ş
 bool dp5(string &s, string &pattern, int i, int j) {
 	static int slen = s.length(),plen=pattern.length();
 
@@ -682,7 +685,7 @@ int main()
 
 	while (1) {
 		string s, p;
-		cout << "è¯·è¾“å…¥" << endl;
+		cout << "ÇëÊäÈë" << endl;
 		cin >> s >> p;
 		cout << "dp5:  " << dp5(s, p, 0, 0) << endl;;
 		system("pause");
@@ -691,13 +694,13 @@ int main()
     std::cout << "Hello World!\n";
 }
 
-// è¿è¡Œç¨‹åº: Ctrl + F5 æˆ–è°ƒè¯• >â€œå¼€å§‹æ‰§è¡Œ(ä¸è°ƒè¯•)â€èœå•
-// è°ƒè¯•ç¨‹åº: F5 æˆ–è°ƒè¯• >â€œå¼€å§‹è°ƒè¯•â€èœå•
+// ÔËĞĞ³ÌĞò: Ctrl + F5 »òµ÷ÊÔ >¡°¿ªÊ¼Ö´ĞĞ(²»µ÷ÊÔ)¡±²Ëµ¥
+// µ÷ÊÔ³ÌĞò: F5 »òµ÷ÊÔ >¡°¿ªÊ¼µ÷ÊÔ¡±²Ëµ¥
 
-// å…¥é—¨ä½¿ç”¨æŠ€å·§: 
-//   1. ä½¿ç”¨è§£å†³æ–¹æ¡ˆèµ„æºç®¡ç†å™¨çª—å£æ·»åŠ /ç®¡ç†æ–‡ä»¶
-//   2. ä½¿ç”¨å›¢é˜Ÿèµ„æºç®¡ç†å™¨çª—å£è¿æ¥åˆ°æºä»£ç ç®¡ç†
-//   3. ä½¿ç”¨è¾“å‡ºçª—å£æŸ¥çœ‹ç”Ÿæˆè¾“å‡ºå’Œå…¶ä»–æ¶ˆæ¯
-//   4. ä½¿ç”¨é”™è¯¯åˆ—è¡¨çª—å£æŸ¥çœ‹é”™è¯¯
-//   5. è½¬åˆ°â€œé¡¹ç›®â€>â€œæ·»åŠ æ–°é¡¹â€ä»¥åˆ›å»ºæ–°çš„ä»£ç æ–‡ä»¶ï¼Œæˆ–è½¬åˆ°â€œé¡¹ç›®â€>â€œæ·»åŠ ç°æœ‰é¡¹â€ä»¥å°†ç°æœ‰ä»£ç æ–‡ä»¶æ·»åŠ åˆ°é¡¹ç›®
-//   6. å°†æ¥ï¼Œè‹¥è¦å†æ¬¡æ‰“å¼€æ­¤é¡¹ç›®ï¼Œè¯·è½¬åˆ°â€œæ–‡ä»¶â€>â€œæ‰“å¼€â€>â€œé¡¹ç›®â€å¹¶é€‰æ‹© .sln æ–‡ä»¶
+// ÈëÃÅÊ¹ÓÃ¼¼ÇÉ: 
+//   1. Ê¹ÓÃ½â¾ö·½°¸×ÊÔ´¹ÜÀíÆ÷´°¿ÚÌí¼Ó/¹ÜÀíÎÄ¼ş
+//   2. Ê¹ÓÃÍÅ¶Ó×ÊÔ´¹ÜÀíÆ÷´°¿ÚÁ¬½Óµ½Ô´´úÂë¹ÜÀí
+//   3. Ê¹ÓÃÊä³ö´°¿Ú²é¿´Éú³ÉÊä³öºÍÆäËûÏûÏ¢
+//   4. Ê¹ÓÃ´íÎóÁĞ±í´°¿Ú²é¿´´íÎó
+//   5. ×ªµ½¡°ÏîÄ¿¡±>¡°Ìí¼ÓĞÂÏî¡±ÒÔ´´½¨ĞÂµÄ´úÂëÎÄ¼ş£¬»ò×ªµ½¡°ÏîÄ¿¡±>¡°Ìí¼ÓÏÖÓĞÏî¡±ÒÔ½«ÏÖÓĞ´úÂëÎÄ¼şÌí¼Óµ½ÏîÄ¿
+//   6. ½«À´£¬ÈôÒªÔÙ´Î´ò¿ª´ËÏîÄ¿£¬Çë×ªµ½¡°ÎÄ¼ş¡±>¡°´ò¿ª¡±>¡°ÏîÄ¿¡±²¢Ñ¡Ôñ .sln ÎÄ¼ş
